@@ -1,12 +1,15 @@
+/* Body */
 body {
     margin: 0px;
     box-sizing: border-box;
 }
 
+/* Main container */
 .container {
     box-sizing: border-box;
 }
 
+/* Style for the header section */
 #header-section {
     padding: 4px;
     color: #000;
@@ -16,11 +19,13 @@ body {
     font-size: 18px;
 }
 
+/* Style for the body section */
 .body-section {
     display: flex;
     height: calc(100vh - 29px);
 }
 
+/* Style for each card */
 #card-section {
     flex:0.8;
     height: inherit;
@@ -28,6 +33,7 @@ body {
     flex-wrap: wrap;
 }
 
+/* Style for the button container */
 #button-section {
     flex: 0.2;
     background-color: #efefef;
@@ -37,6 +43,7 @@ body {
     padding: 20px 0px;
 }
 
+/* Style for the buttons */
 button {
     background-color: #6fc4d8;
     border-radius: 5px;
@@ -49,6 +56,7 @@ button {
     width: 150px;
 }
 
+/* Style for each cards */
 .card {
     flex-grow: 1;
     width: 33%;
@@ -58,6 +66,7 @@ button {
     position: relative;
 }
 
+/* Style for the numbering inside the card */
 .number-style {
     font-weight: 700;
     font-size: 30px;
@@ -65,6 +74,7 @@ button {
     z-index: 5;
 }
 
+/* Responsive code */
 @media screen and (max-width: 376px) {
     #header-section {
         background-color: #333333;

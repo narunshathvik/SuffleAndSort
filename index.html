@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
         <!-- Local style sheet relative to workspace folder -->
         <link rel="stylesheet" href="./styles.css">
-
+        <!-- Project title -->
         <title>Shuffle and Sort</title>
     </head>
-
+    <!-- body starts -->
     <body>
         <div class="container">
+            <!-- Header Section -->
             <div id="header-section">Shuffle and Sort</div>
+            <!-- Body Section -->
             <div class="body-section">
+                <!-- Container to hold all the cards -->
                 <div id="card-section"></div>
+                <!-- Container to hold the buttons  -->
                 <div id="button-section">
                     <button onclick="suffleCards()">Shuffle</button>
                     <button onclick="originalCardOrder()">Sort</button>
@@ -20,6 +23,8 @@
             </div>
         </div>
         <script>
+
+            // Object to store the colors for the cards
             let colorObj = {
                 1 : '#6f98a8',
                 2 : '#2a8dac',
@@ -31,28 +36,39 @@
                 8 : '#6f98a8',
                 9 : '#2f454e',
             }
+            
+            //Function to build the cards
             let originalCardOrder = ()  => {
+                //If cards exist then reset it
                 if(document.getElementById("card-section").childNodes.length > 0) {
                     let cardSection = document.getElementById("card-section");
                     cardSection.textContent='';
                 }
                 for(let i=1; i<=9;i++) {
+                    // Each individaul card
                     let card = document.createElement("div");
+                    // Set the class for each card
                     card.setAttribute("class", "card");
-                    card.style.backgroundColor =colorObj[i];
-                    // card.classList.add('card', `${i}`); 
+                    // Set the background color as per the object
+                    card.style.backgroundColor = colorObj[i];
+                    // Section to create the numbers under each card
                     let node = document.createElement("span");
                     node.setAttribute("class", "number-style");
                     let textnode = document.createTextNode(i);
                     node.appendChild(textnode);
                     card.appendChild(node);
-
+                    
+                    // The wrapper section to hold all the cards
                     let cardSection = document.getElementById("card-section");
                     cardSection.appendChild(card);
                 }
             }
+
+            // Function to suffle the cards
             let suffleCards = () => {
+                // Convert nodelist to array
                 let cardsArray = [...document.getElementById("card-section").childNodes];
+                // Logic to suffle the cards
                 for (let i = cardsArray.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
@@ -60,10 +76,12 @@
                     cardSection.appendChild(cardsArray[i]);
                 }
             }
+
+            //Onload call the function to build the cards
             window.onload = function() {
                 originalCardOrder();
             };
         </script>
     </body>
-
+    <!-- body end -->
 </html>
