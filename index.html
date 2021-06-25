@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <!-- Local style sheet relative to workspace folder -->
+        <link rel="stylesheet" href="./styles.css">
+
+        <title>Shuffle and Sort</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div id="header-section">Shuffle and Sort</div>
+            <div class="body-section">
+                <div id="card-section"></div>
+                <div id="button-section">
+                    <button onclick="suffleCards()">Shuffle</button>
+                    <button onclick="originalCardOrder()">Sort</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            let colorObj = {
+                1 : '#6f98a8',
+                2 : '#2a8dac',
+                3 : '#2f454e',
+                4 : '#2a8dac',
+                5 : '#2f454e',
+                6 : '#bfbfbf',
+                7 : '#bfbfbf',
+                8 : '#6f98a8',
+                9 : '#2f454e',
+            }
+            let originalCardOrder = ()  => {
+                if(document.getElementById("card-section").childNodes.length > 0) {
+                    let cardSection = document.getElementById("card-section");
+                    cardSection.textContent='';
+                }
+                for(let i=1; i<=9;i++) {
+                    let card = document.createElement("div");
+                    card.setAttribute("class", "card");
+                    card.style.backgroundColor =colorObj[i];
+                    // card.classList.add('card', `${i}`); 
+                    let node = document.createElement("span");
+                    node.setAttribute("class", "number-style");
+                    let textnode = document.createTextNode(i);
+                    node.appendChild(textnode);
+                    card.appendChild(node);
+
+                    let cardSection = document.getElementById("card-section");
+                    cardSection.appendChild(card);
+                }
+            }
+            let suffleCards = () => {
+                let cardsArray = [...document.getElementById("card-section").childNodes];
+                for (let i = cardsArray.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
+                    let cardSection = document.getElementById("card-section");
+                    cardSection.appendChild(cardsArray[i]);
+                }
+            }
+            window.onload = function() {
+                originalCardOrder();
+            };
+        </script>
+    </body>
+
+</html>
