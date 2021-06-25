@@ -54,6 +54,7 @@ button {
     box-shadow: 0px 4px 2px #298cac;
     font-size: 16px;
     width: 150px;
+    cursor: pointer;
 }
 
 /* Style for each cards */
